@@ -23,13 +23,14 @@ RUN apt-get update && \
     libqt4-test \
     libavdevice-dev \
     libavfilter-dev \
-    libavcodec-dev \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+    libavcodec-dev 
 
 RUN git clone https://github.com/jasperproject/jasper-client.git jasper \
  && chmod +x jasper/jasper.py \
  && pip install --upgrade setuptools \
- && pip install -r jasper/client/requirements.txt
+ && pip install -r jasper/client/requirements.txt \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /usr/src/app
 
